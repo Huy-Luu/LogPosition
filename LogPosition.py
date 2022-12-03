@@ -5,6 +5,7 @@ import time
 
 serialHandler = SerialDataHandler('/dev/ttyClientB', 115200)
 f = open(r"/home/hluu/LogPosition/data.txt", "a")
+f.write("New data\r")
 
 while True:
     serialHandler.send("m")
@@ -13,5 +14,5 @@ while True:
     lon = UTMmodule.nmeaToDec(lon_nmea)
     print(str(lat) + " " + str(lon))
     f.write(str(lat) + "," + str(lon) + "\r")
-    time.sleep(1)
+    time.sleep(0.5)
     #print(serialHandler.receiveOneInput())
